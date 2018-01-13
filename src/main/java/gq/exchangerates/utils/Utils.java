@@ -1,4 +1,4 @@
-package gq.exchangerates;
+package gq.exchangerates.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +8,10 @@ import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Alexey on 07.01.2018.

@@ -1,4 +1,4 @@
-package gq.exchangerates;
+package gq.exchangerates.model;
 
 import org.springframework.security.core.GrantedAuthority;
 

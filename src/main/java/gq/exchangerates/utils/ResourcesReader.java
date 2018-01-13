@@ -1,4 +1,4 @@
-package gq.exchangerates;
+package gq.exchangerates.utils;
 
 import java.util.ResourceBundle;
 

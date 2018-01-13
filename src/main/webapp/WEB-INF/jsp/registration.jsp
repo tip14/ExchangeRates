@@ -1,3 +1,5 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,24 +9,31 @@
 </head>
 <body>
 
-<form action="/registration" method="post" >
-    <label for="loginField">Login: </label>
-    <input type="text" id="loginField">
+<p>${successRegistration}</p>
+
+<form:form action="/registration" method="post" modelAttribute="user">
+
+    <form:label path = "username">Login: </form:label>
+    <form:input type="text" id="loginField" path = "username" /> <!--it is usernmae in entity -->
     <br/>
-    <label for="countryField">Country: </label>
-    <input type="text" id="countryField">
+    <form:label path = "email">Email: </form:label>
+    <form:input type="email" id="emailField" path = "email" />
     <br/>
-    <label for="dateField">Birthday: </label>
-    <input type="date" id="dateField">
+    <form:label path="birthday">Birthday: </form:label>
+    <form:input type="date" id="dateField" path="birthday" />
     <br/>
-    <label for="passwordField">Password: </label>
-    <input type="password" id="passwordField">
+    <form:label path="country">Country: </form:label>
+    <form:input type="text" id="countryField" path="country"/>
     <br/>
-    <label for="passwordConfirmField">Password confirm: </label>
-    <input type="password" id="passwordConfirmField">
+    <form:label path="password">Password: </form:label>
+    <form:input type="password" id="passwordField" path="password" />
     <br/>
+    <%--<label for="passwordConfirmField">Password confirm: </label>--%>
+    <%--<input type="password" id="passwordConfirmField">--%>
+    <%--<br/>--%>
     <input type="submit" value="Register"/>
-</form>
+
+</form:form>
 
 </body>
 </html>

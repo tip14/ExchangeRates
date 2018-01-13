@@ -1,9 +1,12 @@
-package gq.exchangerates;
+package gq.exchangerates.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,40 +18,27 @@ public class User implements UserDetails{
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
-//    @OneToOne(targetEntity=Role.class, mappedBy="name", fetch=FetchType.EAGER)
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private List<Role> authorities;
     @Column(unique = true)
-    private String userName;
+    private String username;
+    private String email;
     private String password;
-    private boolean isAccountNonExpired;
-    private boolean isAccountNonLocked;
-    private boolean isCredentialsNonExpired;
-    private boolean isEnabled;
-
-    public User() {
-    }
-
-    public User(List<Role> authorities, String username, String password, boolean isAccountNonExpired, boolean isAccountNonLocked, boolean isCredentialsNonExpired, boolean isEnabled) {
-        this.authorities = authorities;
-        this.userName = username;
-        this.password = password;
-        this.isAccountNonExpired = isAccountNonExpired;
-        this.isAccountNonLocked = isAccountNonLocked;
-        this.isCredentialsNonExpired = isCredentialsNonExpired;
-        this.isEnabled = isEnabled;
-    }
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthday;
+    private String country;
+    private boolean isAccountNonExpired = true;
+    private boolean isAccountNonLocked = true;
+    private boolean isCredentialsNonExpired = true;
+    private boolean isEnabled = true;
 
     public static User getNewUser(){
         User user = new User();
         user.setAuthorities(Arrays.asList(Role.USER));
-        user.setUsername("user");
-        user.setPassword("password");
-        user.setAccountNonExpired(true);
-        user.setAccountNonLocked(true);
-        user.setCredentialsNonExpired(true);
-        user.setEnabled(true);
+        user.setUsername("test");
+        user.setPassword("test");
+
         return user;
     }
 
@@ -70,21 +60,12 @@ public class User implements UserDetails{
     }
 
     @Override
-    public String getUsername() {
-        return userName;
-    }
-
-    public void setUsername(String username) {
-        this.userName = username;
-    }
-
-    @Override
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = new BCryptPasswordEncoder().encode(password);
     }
 
     @Override
@@ -121,5 +102,38 @@ public class User implements UserDetails{
 
     public void setEnabled(boolean enabled) {
         isEnabled = enabled;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

@@ -8,6 +8,7 @@
 <body>
 
 <h1>Home page</h1>
+<a href="/registration">Registration</a>
 
 </body>
 </html>
