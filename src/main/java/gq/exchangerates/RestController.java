@@ -29,14 +29,24 @@ public class RestController {
    @Autowired
    private Utils utils;
 
-    @GetMapping("/login")
-    public String getLogin() {
-        return "login";
+//    @GetMapping("/login")
+//    public String getLogin() {
+//        return "login";
+//    }
+//
+//    @GetMapping("/registration")
+//    public String getRegistration() {
+//        return "registration";
+//    }
+
+    @GetMapping
+    public String getHome(){
+        return "index";
     }
 
-    @GetMapping("/registration")
-    public String getRegistration() {
-        return "registration";
+    @GetMapping(value = "/testpermit")
+    public String permitAll(){
+        return "testpermit";
     }
 
     @PostMapping(value = "/rates")

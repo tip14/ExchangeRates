@@ -7,6 +7,7 @@
     <title>Currency Rates on ${currentDate}</title>
 </head>
 <body>
+
 <h1>Currency Rates for ${baseCurrency} on ${currentDate}</h1>
 
 <form method="post" action="/rates">

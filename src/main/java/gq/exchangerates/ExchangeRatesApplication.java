@@ -10,6 +10,7 @@ public class ExchangeRatesApplication {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) throws Exception {
 		return application.sources(ExchangeRatesApplication.class);
 	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(ExchangeRatesApplication.class, args);
 	}
