@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <%@ include file="sections/styles.jsp" %>
     <title>
         Home page
     </title>

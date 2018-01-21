@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <html lang="en">
 <head>
+    <%@ include file="sections/styles.jsp" %>
     <title>Currency Rates on ${currentDate}</title>
 </head>
 <body>
@@ -18,13 +20,15 @@
             <option><c:out value="${symbol}"/></option>
         </c:forEach>
     </select>
-    <input type="submit" value="OK">
+    <input class="btn btn-primary btn-sm" type="submit" value="Change currency">
 
 </form>
 
 <br/>
-<table style="border: 2px black solid" border="1">
-    <tbody>
+
+<table class="table table-bordered table-hover table-sm text-center">
+    <caption>Currency rates for the last 10 days</caption>
+    <thead class="thead-dark">
     <tr>
         <th>
             Request date
@@ -39,7 +43,8 @@
 
         </c:forEach>
     </tr>
-
+    </thead>
+    <tbody>
     <c:forEach items="${jsonResponse}" var="response" varStatus="status">
 
         <tr>
@@ -50,7 +55,7 @@
             <td>${response.date}</td>
             <c:forEach items="${response.rates}" var="rate">
                 <td>
-                        ${rate.value}
+                    <fmt:formatNumber type = "number" maxFractionDigits = "3" minFractionDigits="3"  value = "${rate.value}" />
                 </td>
             </c:forEach>
         </tr>

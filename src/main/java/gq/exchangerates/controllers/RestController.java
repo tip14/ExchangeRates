@@ -1,6 +1,7 @@
 package gq.exchangerates.controllers;
 
 import gq.exchangerates.dao.UserRepository;
+import gq.exchangerates.model.Constants;
 import gq.exchangerates.model.User;
 import gq.exchangerates.utils.ResourcesReader;
 import gq.exchangerates.utils.Utils;
@@ -50,6 +51,7 @@ public class RestController {
     @GetMapping("/registration")
     public String getRegistration(Model model) {
         model.addAttribute("user", new User());
+        model.addAttribute("countries", Constants.countries);
 
         return "registration";
     }
@@ -101,6 +103,11 @@ public class RestController {
     @PostMapping(value = "/rates")
     public String changeCurrency(@ModelAttribute("chooseCurrency") String chooseCurrency){
         return "redirect:/rates/"+chooseCurrency.toLowerCase();
+    }
+
+    @GetMapping(value = "/rates")
+    public String redirectToRates(){
+        return "redirect:/rates/usd";
     }
 
     @GetMapping(value = "/rates/{baseCurrency}")

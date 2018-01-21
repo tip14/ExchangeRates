@@ -83,12 +83,21 @@
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
 		<!-- hot swapping, disable cache for template, enable live reload -->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-devtools</artifactId>-->
+			<!--<scope>runtime</scope>-->
+			<!--<optional>true</optional>-->
+		<!--</dependency>-->
+
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>4.0.0-beta.3</version>
 		</dependency>
+
+
+
 	</dependencies>
 
 
