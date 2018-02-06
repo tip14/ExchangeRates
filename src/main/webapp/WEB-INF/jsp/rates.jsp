@@ -64,6 +64,7 @@
     </tbody>
 </table>
 
+<a class="btn btn-danger text-right" href="/logout">Logout</a>
 
 </body>
 

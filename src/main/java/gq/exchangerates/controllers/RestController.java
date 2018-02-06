@@ -31,16 +31,16 @@ public class RestController {
     //log/register
     //bootstrap 4
 
-   @Autowired
-   private Utils utils;
+    @Autowired
+    private Utils utils;
 
-   @Autowired
-   private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/login")
     public String getLogin(@RequestParam(required = false) String logout,
-                           @RequestParam(required = false) String  error,
-                            Model model) {
+                           @RequestParam(required = false) String error,
+                           Model model) {
 
         model.addAttribute("logout", logout != null);
         model.addAttribute("error", error != null);
@@ -63,9 +63,7 @@ public class RestController {
 //    @ModelAttribute(name = "countryField") String country,
 
     @PostMapping("/registration")
-    public String registerUser(@ModelAttribute User user, Model model){
-
-
+    public String registerUser(@ModelAttribute User user, Model model) {
 
 
 //        User newUser = user;
@@ -85,28 +83,22 @@ public class RestController {
 
         model.addAttribute("successRegistration", "Registration is OK. Use your credentials to log in");
 
-
-
         return "registration";
     }
 
     @GetMapping
-    public String getHome(){
+    public String getHome() {
         return "index";
     }
 
-    @GetMapping(value = "/testpermit")
-    public String permitAll(){
-        return "testpermit";
-    }
 
     @PostMapping(value = "/rates")
-    public String changeCurrency(@ModelAttribute("chooseCurrency") String chooseCurrency){
-        return "redirect:/rates/"+chooseCurrency.toLowerCase();
+    public String changeCurrency(@ModelAttribute("chooseCurrency") String chooseCurrency) {
+        return "redirect:/rates/" + chooseCurrency.toLowerCase();
     }
 
     @GetMapping(value = "/rates")
-    public String redirectToRates(){
+    public String redirectToRates() {
         return "redirect:/rates/usd";
     }
 

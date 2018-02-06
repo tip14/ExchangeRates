@@ -23,10 +23,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity httpSecurity) throws Exception { //allow/disallow pages. choose default pages for login
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/registration", "webjars/*", "css/*", "/resources/**", "resources/static").permitAll()
+                .antMatchers("/resources/**", "/registration").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").usernameParameter("login").permitAll()
+                .formLogin().loginPage("/login").usernameParameter("login").defaultSuccessUrl("/", true).permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll();
 
